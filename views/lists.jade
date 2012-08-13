@@ -1,0 +1,70 @@
+extends layout
+
+block content
+
+  script(type='text/javascript')
+    var listSelected = false;    
+
+    function SetListId(listid){
+
+      document.getElementById('ListId').value = listid;
+      document.getElementById('ListHeader').className = 'listTableHeadersDone';  
+
+      listSelected = true;    
+     }
+
+    function CheckComplete(){
+
+       if (listSelected) {
+         return true;
+       } 
+       else
+       {
+          alert('Please select a list from the board.');
+          return false;
+       }       
+     }
+  div(class='bodyBlock') 
+    h1= title
+    h2(class='subHeading') Step 2 - Set List and Render Details
+    table(class='listTable')
+      tr
+        td(class='listTableHeaders', id='ListHeader')
+          b Lists 
+      each list in lists
+        tr 
+          td(class='listTableCells')
+             a(href='javascript:SetListId("#{list.id}")') #{list.name}
+    br
+    br
+    form(action="/notes", method="post", onsubmit='return CheckComplete()')
+      table(class='listTable')
+        tr
+          td(width='20') 
+            input(type='radio', name='GroupingCheck', checked='true', value='No')
+          td(align='left')
+            | Do not group cards
+        tr
+          td(width='20')
+            input(type='radio', name='GroupingCheck', value='Yes')
+          td(align='left')
+            | Group cards by color
+        tr
+          td
+          td
+            table
+              tr      
+               td(align='right') "New Features" card color
+               td
+                 input(type='textbox', name='FeatureColor', value='green', size='5') 
+            
+              tr
+                td(align='right') "Fixes" card color
+                td 
+                   input(type='textbox', name='FixesColor', value='red', size='5') 
+      br
+      br
+      input(type='textbox', name='ListId', id='ListId', hidden='true')
+      input(type='textbox', name='KeyId', hidden='true', value=keyid)
+      input(type='textbox', name='TokenId', hidden='true', value=tokenid)
+      input(type='submit', value='Create Release Notes', class='buttons')

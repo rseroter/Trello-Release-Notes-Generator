@@ -1,0 +1,52 @@
+extends layout
+
+block content
+  script(type='text/javascript')
+    function GenerateTokenUrl() {
+
+       var key = document.getElementById('KeyId').value;
+       var link = 'https://trello.com/1/authorize?key='+ key +'&name=Release+Notes+Generator&expiration=never&response_type=token';
+       window.open(link);
+       
+     }
+
+    function CheckComplete(){
+
+        var board = document.getElementById('BoardId').value;
+        var key = document.getElementById('KeyId').value;
+        var token = document.getElementById('TokenId').value;
+
+        if(board != '' && key != '' && token != '')
+        {
+            return true;
+        }
+        else
+        {
+          alert('Please enter a board ID, key ID and token ID.');
+          return false;
+        }
+     } 
+  div(class='bodyBlock')
+    h1= title
+    h2(class='subHeading') Step 1 - Board and Security Info
+    form(action='/lists', method='post', onsubmit='return CheckComplete()')
+     table
+       tr
+         td(class='tableHeaders')
+           | Board Id
+         td 
+           input(type='textbox', name='BoardId', id='BoardId', value='', size='75')
+       tr
+         td(class='tableHeaders')
+           | Key 
+         td
+           input(type='textbox', name='KeyId', id='KeyId', value='', size='75')
+       tr  
+         td(class='tableHeaders')
+           | Token
+         td 
+           input(type='textbox', name='TokenId', id='TokenId', value='', size='75')
+           a(href='javascript:GenerateTokenUrl()') [generate token]
+       tr
+         td(colspan='2', align='center')
+           input(type='submit', value='Get Lists', class='buttons')

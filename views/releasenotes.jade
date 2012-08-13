@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  div(class='bodyBlock') 
+    h1= title
+    if isGrouped == 'No'
+      p
+        b Updates (#{cards.length})
+      hr(width='95%', align='left')
+      ul
+      each card in cards 
+         li(style='margin-bottom: 5px')
+           b #{card.name}
+           &nbsp;&nbsp;[description]
+    else
+      p
+        b New Features (#{featurecards.length})
+      hr(width='95%', align='left')
+      ul
+      each card in featurecards 
+       li(style='margin-bottom: 5px')
+         b #{card.name}
+         &nbsp;&nbsp;[description]
+      p
+        br
+      p
+        b Fixes (#{fixcards.length})
+      hr(width='95%', align='left')
+      ul
+      each card in fixcards 
+        li(style='margin-bottom: 5px')
+          b #{card.name}
+          &nbsp;&nbsp;[description]

@@ -1,0 +1,63 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color:#F0F0F0;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.bodyBlock
+{
+  padding: 10px;
+  border: 1px solid silver;
+  background-color: white;
+  width: 750px;
+}
+
+.subHeading
+{
+  color:gray;
+}
+
+.buttons
+{
+  height: 35px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.tableHeaders
+{
+  font-weight: bold;
+  text-align: right;
+  padding: 10px;
+}
+
+.listTable
+{
+  border: 1px solid silver;
+  background-color: white;
+  width: 350px;
+}
+
+.listTableHeaders
+{
+  font-weight:bold;
+  background-color:red;
+  color:white;
+  padding: 10px;
+}
+
+.listTableHeadersDone
+{
+  font-weight:bold;
+  background-color:blue;
+  color:white;
+  padding: 10px;
+}
+
+.listTableCells
+{
+  padding: 10px;
+}
