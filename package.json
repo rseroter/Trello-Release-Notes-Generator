@@ -16,7 +16,7 @@
     
 		"express": "3.0.0rc2",
     
-		"jade": "*"
+		"jade": "0.27.2"
 ,
 		"node-trello": "0.1.2"  
 	}
